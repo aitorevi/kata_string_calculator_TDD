@@ -22,12 +22,16 @@ public class StringCalculator {
         // remplazar salto por coma
         var regexForReplaceDelimiter = extractDelimiter(numbers);
         if (!regexForReplaceDelimiter.equals("")){
-            var numbersTextOfSum = Arrays.stream(numbers.substring(6).split(regexForReplaceDelimiter)).toList();
+            List<String> numbersTextOfSum = extractNumbersText(numbers.substring(6), regexForReplaceDelimiter);
             return numbersTextOfSum.stream().map(Integer::valueOf).toList();
         }
-        var unifySeparator = numbers.replaceAll("\n",",");
-        var numbersTextOfSum = Arrays.stream(unifySeparator.split(",")).toList();
+        numbers = numbers.replaceAll("\n",",");
+        List<String> numbersTextOfSum = extractNumbersText(numbers, ",");
         return numbersTextOfSum.stream().map(Integer::valueOf).toList();
+    }
+
+    private static List<String> extractNumbersText(String numbers, String regexForReplaceDelimiter) {
+        return Arrays.stream(numbers.split(regexForReplaceDelimiter)).toList();
     }
 
     private static Integer sumAll(List<Integer> numbersIntOfSum) {
