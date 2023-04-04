@@ -20,7 +20,9 @@ public class StringCalculator {
     }
 
     private static List<Integer> transformTextToValues(String numbers) {
-        var numbersTextOfSum = Arrays.stream(numbers.split(",")).toList();
+        // remplazar salto por coma
+        var unifySeparator = numbers.replaceAll("\n",",");
+        var numbersTextOfSum = Arrays.stream(unifySeparator.split(",")).toList();
         return numbersTextOfSum.stream().map(Integer::valueOf).toList();
     }
 
