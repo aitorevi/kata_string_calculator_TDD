@@ -19,13 +19,14 @@ public class StringCalculator {
         }
         return 0;
     }
+
     private static List<Integer> transformTextToValues(String numbers) throws NegativeNumberException {
         var regexForReplaceDelimiter = extractDelimiter(numbers);
-        if (!regexForReplaceDelimiter.equals("")){
+        if (!regexForReplaceDelimiter.equals("")) {
             List<String> numbersTextOfSum = extractNumbersText(numbers.substring(6), regexForReplaceDelimiter);
             return extractNumbersIntOfSum(numbersTextOfSum);
         }
-        numbers = numbers.replaceAll("\n",",");
+        numbers = numbers.replaceAll("\n", ",");
         List<String> numbersTextOfSum = extractNumbersText(numbers, ",");
         return extractNumbersIntOfSum(numbersTextOfSum);
     }
@@ -66,17 +67,19 @@ public class StringCalculator {
         }
         return negativeNumbers;
     }
+
     private static List<String> extractNumbersText(String numbers, String regexForReplaceDelimiter) {
         return Arrays.stream(numbers.split(regexForReplaceDelimiter)).toList();
     }
 
     private static Integer sumAll(List<Integer> numbersIntOfSum) {
-        return numbersIntOfSum.stream().reduce(0,Integer::sum);
+        return numbersIntOfSum.stream().reduce(0, Integer::sum);
     }
+
     private static String extractDelimiter(String numbers) {
         var delimiter = "";
         if (numbers.startsWith("//")) {
-            delimiter = numbers.substring(3,4);
+            delimiter = numbers.substring(3, 4);
         }
         return delimiter;
     }
