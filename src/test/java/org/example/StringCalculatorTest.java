@@ -9,7 +9,7 @@ class StringCalculatorTest {
 
     @Test
     void empty_string_resolves_zero() {
-        assertThat("").isEqualTo(0);
+        assertThat(StringCalculator.Add("")).isEqualTo(0);
     }
 }
 
