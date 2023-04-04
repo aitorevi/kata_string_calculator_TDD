@@ -40,6 +40,10 @@ public class StringCalculator {
             }
             throw new NegativeNumberException(errorMessage.toString());
         }
+        return extractValidNumbersForTheSum(numbersIntOfSum);
+    }
+
+    private static List<Integer> extractValidNumbersForTheSum(List<Integer> numbersIntOfSum) {
         List<Integer> validNumbersForTheSum = new ArrayList<>();
         for (Integer number : numbersIntOfSum) {
             if (number < 1001) {
