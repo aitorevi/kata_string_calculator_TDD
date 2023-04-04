@@ -32,6 +32,14 @@ class StringCalculatorTest {
     void handle_a_default_delimiter_resolves_sum_numbers() {
         assertThat(StringCalculator.Add("//[;]\n1;2")).isEqualTo(3);
     }
+    @Test
+    void does_not_handle_negative_numbers() {
+        var errorMessage = "negatives not allowed, (-1)(-9)";
+        NegativeNumberException capturedException =
+                assertThrows(NegativeNumberException.class, () ->
+                StringCalculator.Add("//[;]\n-1;3;-9"));
+        assertThat(capturedException.getMessage).isEquals(errorMessage);
+    }
 }
 /*
 Step 1:
@@ -43,9 +51,7 @@ Step 2:
 Step 3:
 "1\n2" -> 3 *
 Step 4:
-“//[;]\n1;2” -> 3
-
- */
-/*
-
+“//[;]\n1;2” -> 3 *
+Step 5:
+"//[;]\n-1;3,-9" -> NegativeNumberException "negatives not allowed, (-1)(-9)"
  */
