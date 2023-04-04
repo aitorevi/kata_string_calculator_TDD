@@ -23,19 +23,27 @@ public class StringCalculator {
         var regexForReplaceDelimiter = extractDelimiter(numbers);
         if (!regexForReplaceDelimiter.equals("")){
             List<String> numbersTextOfSum = extractNumbersText(numbers.substring(6), regexForReplaceDelimiter);
-            var numbersIntOfSum = numbersTextOfSum.stream().map(Integer::valueOf).toList();
-            var negativeNumbers = extractNegativeNumbers(numbersIntOfSum);
-            StringBuilder errorMessage = new StringBuilder("negatives not allowed, ");
-            if (!negativeNumbers.isEmpty()) {
-                for (Integer number : negativeNumbers) {
-                    errorMessage.append("(").append(number).append(")");
-                }
-                throw new NegativeNumberException(errorMessage.toString());
-            }
-            return numbersIntOfSum;
+            return extractNumbersIntOfSum(numbersTextOfSum);
         }
         numbers = numbers.replaceAll("\n",",");
         List<String> numbersTextOfSum = extractNumbersText(numbers, ",");
+        return extractNumbersIntOfSum(numbersTextOfSum);
+    }
+
+    private static List<Integer> extractNumbersIntOfSum(List<String> numbersTextOfSum) throws NegativeNumberException {
+        List<Integer> numbersIntOfSum = transformToIntNumbers(numbersTextOfSum);
+        var negativeNumbers = extractNegativeNumbers(numbersIntOfSum);
+        StringBuilder errorMessage = new StringBuilder("negatives not allowed, ");
+        if (!negativeNumbers.isEmpty()) {
+            for (Integer number : negativeNumbers) {
+                errorMessage.append("(").append(number).append(")");
+            }
+            throw new NegativeNumberException(errorMessage.toString());
+        }
+        return numbersIntOfSum;
+    }
+
+    private static List<Integer> transformToIntNumbers(List<String> numbersTextOfSum) {
         return numbersTextOfSum.stream().map(Integer::valueOf).toList();
     }
 

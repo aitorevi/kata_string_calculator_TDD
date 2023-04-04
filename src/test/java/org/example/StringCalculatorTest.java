@@ -37,9 +37,18 @@ class StringCalculatorTest {
         var errorMessage = "negatives not allowed, (-1)(-9)";
         NegativeNumberException capturedException =
                 assertThrows(NegativeNumberException.class, () ->
-                StringCalculator.Add("//[;]\n-1;3;-9"));
+                        StringCalculator.Add("-1,3,-9"));
         assertThat(capturedException.getMessage()).isEqualTo(errorMessage);
     }
+    @Test
+    void does_not_handle_negative_numbers_with_default_delimiter() {
+        var errorMessage = "negatives not allowed, (-1)(-9)";
+        NegativeNumberException capturedException =
+                assertThrows(NegativeNumberException.class, () ->
+                        StringCalculator.Add("//[;]\n-1;3;-9"));
+        assertThat(capturedException.getMessage()).isEqualTo(errorMessage);
+    }
+
 }
 /*
 Step 1:
@@ -53,5 +62,9 @@ Step 3:
 Step 4:
 “//[;]\n1;2” -> 3 *
 Step 5:
-"//[;]\n-1;3,-9" -> NegativeNumberException "negatives not allowed, (-1)(-9)"
+"//[;]\n-1;3,-9" -> NegativeNumberException "negatives not allowed, (-1)(-9)" *
+"-1;3,-9" -> NegativeNumberException "negatives not allowed, (-1)(-9)" *
+Step 6:
+"2,1001" -> 2
+"//[;]\n2;1001" -> 2
  */
