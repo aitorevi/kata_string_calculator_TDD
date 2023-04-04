@@ -11,8 +11,19 @@ class StringCalculatorTest {
     void empty_string_resolves_zero() {
         assertThat(StringCalculator.Add("")).isEqualTo(0);
     }
+    @Test
+    void one_number_in_string_resolves_number() {
+        assertThat(StringCalculator.Add("1")).isEqualTo(1);
+    }
 }
+/*
+Step 1:
+"" -> 0
+"1" -> 1
+"1,2" -> 3
+Step 2:
 
+ */
 /*
 Crear una simple calculadora String con una firma de método:
 ---------------
