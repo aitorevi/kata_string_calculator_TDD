@@ -20,9 +20,10 @@ class StringCalculatorTest {
         assertThat(StringCalculator.Add("1,2")).isEqualTo(3);
     }
     @Test
-    void handle_an_unknown_amount_of_numbers_in_string_resolves_sum_numbers() {
+    void handle_an_unknown_amount_of_numbers_resolves_sum_numbers() {
         assertThat(StringCalculator.Add("1,2,3,4")).isEqualTo(10);
     }
+
 }
 /*
 Step 1:
@@ -31,6 +32,8 @@ Step 1:
 "1,2" -> 3 *
 Step 2:
 "1,2,3,4" -> 10 *
+Step 3:
+"1\n2" -> 3
  */
 /*
 
