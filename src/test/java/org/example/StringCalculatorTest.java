@@ -48,7 +48,10 @@ class StringCalculatorTest {
                         StringCalculator.Add("//[;]\n-1;3;-9"));
         assertThat(capturedException.getMessage()).isEqualTo(errorMessage);
     }
-
+    @Test
+    void numbers_greater_than_a_thousand_are_ignored() throws NegativeNumberException {
+        assertThat(StringCalculator.Add("2,1001")).isEqualTo(2);
+    }
 }
 /*
 Step 1:
