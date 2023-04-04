@@ -23,7 +23,10 @@ class StringCalculatorTest {
     void handle_an_unknown_amount_of_numbers_resolves_sum_numbers() {
         assertThat(StringCalculator.Add("1,2,3,4")).isEqualTo(10);
     }
-
+    @Test
+    void handle_new_lines_between_numbers_resolves_sum_numbers() {
+        assertThat(StringCalculator.Add("1\n2")).isEqualTo(3);
+    }
 }
 /*
 Step 1:
