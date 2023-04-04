@@ -40,7 +40,13 @@ public class StringCalculator {
             }
             throw new NegativeNumberException(errorMessage.toString());
         }
-        return numbersIntOfSum;
+        List<Integer> validNumbersForTheSum = new ArrayList<>();
+        for (Integer number : numbersIntOfSum) {
+            if (number < 1001) {
+                validNumbersForTheSum.add(number);
+            }
+        }
+        return validNumbersForTheSum;
     }
 
     private static List<Integer> transformToIntNumbers(List<String> numbersTextOfSum) {
