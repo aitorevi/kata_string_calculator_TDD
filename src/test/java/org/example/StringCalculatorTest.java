@@ -27,6 +27,10 @@ class StringCalculatorTest {
     void handle_new_lines_between_numbers_resolves_sum_numbers() {
         assertThat(StringCalculator.Add("1\n2")).isEqualTo(3);
     }
+    @Test
+    void handle_a_default_delimiter_resolves_sum_numbers() {
+        assertThat(StringCalculator.Add("//[;]\n1;2")).isEqualTo(3);
+    }
 }
 /*
 Step 1:
@@ -36,7 +40,10 @@ Step 1:
 Step 2:
 "1,2,3,4" -> 10 *
 Step 3:
-"1\n2" -> 3
+"1\n2" -> 3 *
+Step 4:
+“//[;]\n1;2” -> 3
+
  */
 /*
 
