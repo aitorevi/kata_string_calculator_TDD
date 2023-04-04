@@ -15,6 +15,10 @@ class StringCalculatorTest {
     void one_number_in_string_resolves_number() {
         assertThat(StringCalculator.Add("1")).isEqualTo(1);
     }
+    @Test
+    void two_numbers_in_string_resolves_sum_numbers() {
+        assertThat(StringCalculator.Add("1,2")).isEqualTo(3);
+    }
 }
 /*
 Step 1:
