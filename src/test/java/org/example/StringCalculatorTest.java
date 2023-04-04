@@ -19,28 +19,19 @@ class StringCalculatorTest {
     void two_numbers_in_string_resolves_sum_numbers() {
         assertThat(StringCalculator.Add("1,2")).isEqualTo(3);
     }
+    @Test
+    void handle_an_unknown_amount_of_numbers_in_string_resolves_sum_numbers() {
+        assertThat(StringCalculator.Add("1,2,3,4")).isEqualTo(10);
+    }
 }
 /*
 Step 1:
-"" -> 0
-"1" -> 1
-"1,2" -> 3
+"" -> 0 *
+"1" -> 1 *
+"1,2" -> 3 *
 Step 2:
-
+"1,2,3,4" -> 10 *
  */
 /*
-Crear una simple calculadora String con una firma de método:
----------------
-int Suma(cadena números)
----------------
-El método puede tomar hasta dos números, separados por comas, y devolverá su suma.
-por ejemplo "" o "1" o "1,2" como entradas.
-(para una cadena vacía devolverá 0)
-Sugerencias:
-------
- - Empieza con el caso de prueba más simple de una cadena vacía y pasa a uno y dos números.
- - Acuérdate de resolver las cosas de la forma más sencilla posible para obligarte a escribir pruebas en las que no habías pensado.
- - Recuerda refactorizar después de cada prueba superada
 
-Traducción realizada con la versión gratuita del traductor www.DeepL.com/Translator
  */
